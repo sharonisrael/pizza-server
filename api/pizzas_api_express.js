@@ -40,7 +40,6 @@ pizzaApp.get("/api/all_pizzas", (req, res) => {
 
 // Use http://localhost:5000/api/pizza/100
 pizzaApp.get("/api/pizza/:id", (req, res) => {
-  console.log("In pizza id:", req.params.id);
   // Can be either with find (object) or filter (array)
   // const pizza = pizzaTypes.find((p) => p.id === parseInt(req.params.id));
   // if (!pizza) {
@@ -68,7 +67,6 @@ pizzaApp.get("/api/pizza/:id", (req, res) => {
 pizzaApp.post("/api/add_pizza", (req, res) => {
   const pizza = req.body;
   pizzaTypes.push(pizza);
-  console.log(pizzaTypes);
   // return the pizza so client will know the id
   res.send(pizza);
 });
@@ -79,14 +77,11 @@ pizzaApp.post("/api/add_pizza", (req, res) => {
 // Bad
 // [{"id":101,"name":"H1","image":"/images/pizza_vegetables.jpg","description":"Pizza with vegetables and special sauce","price":50}]
 pizzaApp.put("/api/update_pizza_name/:id", (req, res) => {
-  console.log("BODY", req.body);
   let pizza = pizzaTypes.find((p) => p.id === parseInt(req.params.id));
   if (!pizza) {
     res.status(404).send(`Pizza ${req.params.id} not found`);
   } else {
-    console.log(req.body.name);
     pizza.name = req.body.name;
-    console.log(pizzaTypes);
     // return the pizza so client will know the id
     res.send(pizza);
   }
@@ -94,7 +89,6 @@ pizzaApp.put("/api/update_pizza_name/:id", (req, res) => {
 
 // Use http://localhost:5000/api/delete_pizza/100
 pizzaApp.delete("/api/delete_pizza/:id", (req, res) => {
-  console.log("In pizza id:", req.params.id);
   // const pizza = pizzaTypes.filter((p) => p.id === parseInt(req.params.id));
   // if (pizza.length == 0) {
   const pizza = pizzaTypes.find((p) => p.id === parseInt(req.params.id));

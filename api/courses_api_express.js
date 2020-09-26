@@ -30,7 +30,6 @@ simpleApp.get("/", (req, res) => {
 });
 
 simpleApp.get("/api/course/:id", (req, res) => {
-  console.log("In course id:", req.params.id);
   const course = courses.filter((c) => c.id === parseInt(req.params.id));
   res.send(course);
 });
