@@ -1,33 +1,6 @@
-const express = require("express");
-const app = express();
-
-app.get("/", (req, res) => {
-  // callback function which is route handler
-  res.send("Hello world 2");
-});
-
-app.get("/simple_array", (req, res) => {
-  // callback function which is route handler
-  res.send([1, 2, 3]);
-});
-
-app.get("/get_all_pizzas", (req, res) => {
-  res.status(200).json({
-    // It's a JSON with several objects
-    // First one is pizzas
-    pizzas: [1, 2, 3],
-  });
-});
-
-// Try with http://localhost:5000/api/posts/2020/1?sortyBy=Acs
-app.get("/api/posts/:year/:month", (req, res) => {
-  // res.send(req.params);
-  // res.send(req.query);
-  res.status(200).json({
-    params: req.params,
-    query: req.query,
-  });
-});
+// Cannot use import so I'm using require with export module
+//const app = require("./api/courses_api_express");
+const app = require("./api/pizzas_api_express");
 
 // You can set process environment PORT using eith
 // export PORT=5000
