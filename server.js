@@ -5,7 +5,7 @@ const app = require("./api/pizzas_api_express");
 // You can set process environment PORT using eith
 // export PORT=5000
 // or in Windows set PORT=5000
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log("Listning on port", port);
   // To create a template literal you need to use backticks next to the 1 key and not quote or single quotes

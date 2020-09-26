@@ -7,6 +7,23 @@ const courses = [
   { id: 3, name: "C" },
 ];
 
+// Middleware for CROS
+pizzaApp.use((req, res, next) => {
+  // We want in the begnining to add the CROS message
+  // Accept all connections
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-retquested-With, Content-Type, Accept, Authorization"
+  );
+
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, GET, DELETE");
+    res.status(200).json({});
+  }
+  next();
+});
+
 simpleApp.get("/", (req, res) => {
   // callback function which is route handler
   res.send("Hello world 2");
